@@ -18,7 +18,7 @@
 
 **operadores lógicos booleanos**
 *&&* - *and* -> para dar true, os dois lados da comparação precisam ser true
-*||* - *or- -> para ser true, basta um dos lados ser true
+*||* - *or*- -> para ser true, basta um dos lados ser true
 *!* - *not* -> inverter os valores(true vira false)
 
 **operadores ternários**
