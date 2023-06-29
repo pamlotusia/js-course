@@ -28,3 +28,15 @@ Faz comparativo com apenas uma linha de código, especialmente utilizado em *if 
 *console.log(false ? 'false' : 'verdadeiro')* - ou seja, se a condição der false, imprima "false", do contrario, imprima "verdadeiro"
 
 console.log(3 + 3 == 6 ? 'show' : 'ruim')
+
+**É possivel declarar várias variaveis em uma unica linha separando com virgula**
+*let um = 1; dois= 2, tres =3*  - Não é aconselhavel porque dificulta a leitura do codigo, mas dá pra fazer
+
+**Não é aconselhavel usar o var para declarar váriavel, ele faz parte da sintaxe antiga e deve ser evitado. Prefira o const ou let**
+
+* Em JavaScript para declarar **variaveis**, é apropriado usar o estilo camelCase
+
+* sintaxe para chamar/inicializar função
+*nomeDaFuncao();*
+
+* A biblioteca Math é nativa do JS e contem diversos metodos para utilizar - é muito utilizada
