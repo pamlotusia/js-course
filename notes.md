@@ -48,6 +48,5 @@ console.log(3 + 3 == 6 ? 'show' : 'ruim')
    *{declaração}*
 
 ex: for (let numero = 2; numero < 20; numero *= numero){
-  
-  console.log(numero)
+    console.log(numero)
 }
