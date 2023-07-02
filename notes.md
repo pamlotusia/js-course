@@ -1,6 +1,8 @@
 **Boas práticas do curso**
 1. Fazer exercícios extras de fixação, além dos demonstrados em aula.
 
+2. Em JavaScript para declarar **variaveis**, é apropriado usar o estilo camelCase
+
 
 **typeof** - imprime o tipo de dado
 
@@ -34,7 +36,6 @@ console.log(3 + 3 == 6 ? 'show' : 'ruim')
 
 **Não é aconselhavel usar o var para declarar váriavel, ele faz parte da sintaxe antiga e deve ser evitado. Prefira o const ou let**
 
-* Em JavaScript para declarar **variaveis**, é apropriado usar o estilo camelCase
 
 * sintaxe para chamar/inicializar função
 *nomeDaFuncao();*
@@ -42,6 +43,7 @@ console.log(3 + 3 == 6 ? 'show' : 'ruim')
 * A biblioteca Math é nativa do JS e contem diversos metodos para utilizar - é muito utilizada
 
 **for Javascrpit - estrutura de repetição**
+
 *for ([inicialização]; [condição]; [expressão final])* - sintaxe
    *declaração*
 ex: for (let numero = 2; numero < 20; numero *= numero){
