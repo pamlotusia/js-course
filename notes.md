@@ -40,3 +40,10 @@ console.log(3 + 3 == 6 ? 'show' : 'ruim')
 *nomeDaFuncao();*
 
 * A biblioteca Math é nativa do JS e contem diversos metodos para utilizar - é muito utilizada
+
+**for Javascrpit - estrutura de repetição**
+*for ([inicialização]; [condição]; [expressão final])* - sintaxe
+   *declaração*
+ex: for (let numero = 2; numero < 20; numero *= numero){
+  console.log(numero)
+}
