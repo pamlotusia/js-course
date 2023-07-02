@@ -15,7 +15,7 @@
 
 **o barra (\n) pode dar efeito de escape, pular linha**
 
-*==* - igual
+*==* - igual \n
 *===* - identico
 
 **operadores lógicos booleanos**
