@@ -15,8 +15,8 @@
 
 **o barra (\n) pode dar efeito de escape, pular linha**
 
-*==* - igual \n
-*===* - identico
+== : igual 
+=== : identico
 
 **operadores lógicos booleanos**
 *&&* - *and* -> para dar true, os dois lados da comparação precisam ser true

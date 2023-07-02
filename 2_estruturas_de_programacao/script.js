@@ -134,3 +134,5 @@ switch ((cor, tecido)) {
   default:
     console.log('Nenhuma condição foi atendida')
 }
+
+
