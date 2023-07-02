@@ -45,8 +45,9 @@ console.log(3 + 3 == 6 ? 'show' : 'ruim')
 **for Javascrpit - estrutura de repetição**
 
 *for ([inicialização]; [condição]; [expressão final])*
-   *declaração*
+   *{declaração}*
 
 ex: for (let numero = 2; numero < 20; numero *= numero){
+  
   console.log(numero)
 }
