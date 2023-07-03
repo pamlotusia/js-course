@@ -50,3 +50,8 @@ console.log(3 + 3 == 6 ? 'show' : 'ruim')
 ex: for (let numero = 2; numero < 20; numero *= numero){
     console.log(numero)
 }
+
+function potencia(a,b){
+  // return Math.pow(a, b)
+  return a ** b  **sinal de ** é de potencia**
+}
