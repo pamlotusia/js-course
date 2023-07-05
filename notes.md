@@ -55,3 +55,12 @@ function potencia(a,b){
   // return Math.pow(a, b)
   return a ** b  **sinal de ** é de potencia**
 }
+
+*tudo que vem depois de um ponto na variavel é um propriedade*
+por ex:
+let lista = [1,2,3]
+lista.length : length é propriedade, é declarada depois do ponto
+metodos tambem vem depois de um ponto, porem metodos são acompanhados de (), porque são funções
+
+**pesquisar metodos**
+* assign - juntar chaves e valores

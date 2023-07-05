@@ -118,6 +118,18 @@ function isPalindrome(palavra){
 }
 console.log(isPalindrome('pamela'))
 
+// exercicio 9 - extra - cálculo da média - negado*
+function calculateAverage(numeros){
+  let soma = 0
+  for(let i = 0; i < numeros.length; i++){
+    soma += numeros[i]
+  }
+  return soma / numeros.length
+}
+
+let numeros = [10,9,9]
+console.log(calculateAverage(numeros))
+
 // exercicio 10 - extra - inverter string
 function reverseString(palavra){
   return palavra.split("").reverse().join("") 
