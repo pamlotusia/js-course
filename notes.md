@@ -64,3 +64,5 @@ metodos tambem vem depois de um ponto, porem metodos são acompanhados de (), po
 
 **pesquisar metodos**
 * assign - juntar chaves e valores
+
+**JSON** não possue metodos
