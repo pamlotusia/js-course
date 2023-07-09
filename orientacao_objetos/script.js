@@ -126,3 +126,107 @@ class Teacher {
 let teacher1 = new Teacher('Gabriela', 'English')
 console.log(teacher1)
 console.log(teacher1.name)
+
+////////////////Mais sobre classes////////////////
+//Não podemos adicionar propriedades na classes, só via prototype
+//A classe só aceita metodos
+//Ou seja, para atribuir propriedades, colocar como parametro dentro do metodo constructor. Para atribuir outros metodos, basta defini-los abaixo, como no exemplo.
+
+class Student{
+  constructor(name, age, team){
+    this.name = name
+    this.age = age
+    this.team = team
+  }
+  greeting(){
+    console.log(`Hi, my name is ${this.name}. Nice to meet you.`)
+  }
+}
+
+let student1 = new Student('Pamela', 21, '3C - ADS')
+student1.greeting()
+
+//////Override nas propriedades Prototype///////////
+//Sempre que adicionamos uma propriedade a um objeto, é criada uma idêntica no Prototype
+//Podemos substituir a do prototype
+
+class Team{
+  constructor(name){
+    this.name = name
+  }
+}
+
+let team1 = new Team('vasco')
+console.log(team1)
+
+Team.prototype.name = 'Corinthians' //alterando o valor padrão da classe
+console.log(team1.name) //o paremetro já foi passado, entao permanece
+let team2 = new Team()
+console.log(team2.name) //undefield. mesmo que haja um valor padrão (prototype) definido, na instancia daquela classe naõ foi atribuido nenhum valor para as chaves de parametro, então a instancia está vazia
+console.log(Team.prototype.name)//verifica o valor do prototype da classe Team
+
+///////////////////////Symbols//////////////////////
+//Propriedades unicas, que não podem ser alteradas e nem criadas duas vezes. O real 'valor padrão'
+//Podemos utilizar como uma constante, só que na propriedade de objeto
+
+class Clothes{
+  constructor(fabric, color){
+    this.fabric = fabric
+    this.color = color
+  }
+}
+
+let size = Symbol() 
+Clothes.prototype[size] = '1m'
+
+let shirt = new Clothes('Cotton', 'White')
+console.log(shirt) //valores de prototype não aparecem aqui porque não são propriedades da classe
+console.log(Clothes.prototype[size]) //acessando prototype da classe
+console.log(shirt[size]) //sintaxe de colchetes para acessar prototype da instancia de classe
+
+/////////////////Getters e setters/////////////////
+//Palavras reservadas (e metodos) que com o aproveitamento de uma sintaxe consequem retornar ou alterar valores dentro da classe 
+//Get: serve para resgatar o valor de uma propriedade
+//Set: serve para alterar o valor de uma propriedade
+
+class Person{
+  constructor(name){
+    this.name = name
+  }
+  get takeName(){
+    return `My name is ${this.name}`
+  }
+  set changeName(value){
+    this.name = value
+  }
+}
+
+let person1 = new Person('Alice')
+console.log(person1.takeName) //nao usa parenteses porque não recebe tratamento de metodo, recbe tratamento de propriedade
+person1.changeName = 'Paulo'
+console.log(person1.takeName)
+
+/////////////Herança (inheritance)///////////////
+//Uma classe pode herdar propriedades de outra classe por herança
+//Para isso usamos extends
+
+class Mammal{
+  constructor(paws){
+    this.paws = paws
+  }
+}
+
+class Dog extends Mammal{
+  constructor(paws, breed){
+    super(paws, paws)
+    this.breed = breed
+  }
+}
+
+let pug = new Dog(4, 'Pug')
+console.log(pug)
+
+//////////////////Operador intanceof/////////////////
+//Podemos verificar quem é o pai do objeto utilizando o intanceof
+//Não gostei muito, ter que verificar um a um ao inves de me dar logo o pai
+console.log(new Dog instanceof Mammal) //true
