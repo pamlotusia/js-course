@@ -180,3 +180,23 @@ console.log(conta1)
 let conta2 = new ContaEspecial(10000, 50000, 1)
 conta2.jurosDeAniversario()
 console.log(conta2)
+
+
+//exercio 1 - extra - WordCounter *nao aceito
+class WordCounter{
+  constructor(){
+  }
+  countWords(string){
+    let contador = 0
+    let separador = string.split(' ')
+    for(let i = 0; i < separador.length; i++){
+      console.log(separador[i])
+      contador++
+    }
+    return contador 
+  }
+}
+
+obj2 = new WordCounter()
+console.log(obj2.countWords('ado ado ado quem olhar pra mim é viado'))
+
