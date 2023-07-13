@@ -66,3 +66,5 @@ metodos tambem vem depois de um ponto, porem metodos são acompanhados de (), po
 * assign - juntar chaves e valores
 
 **JSON** não possue metodos
+
+**Expressões regulares** é uma forma de encontrar padrões em uma string. Com ela você pode fazer validações, por exemplo. Expressões regulares tambem são conhecidas como regex
