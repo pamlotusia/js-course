@@ -21,17 +21,52 @@ console.log(reg1.test(nome)) // verificando string da variavel
 //Para definir um conjunto no regex, basta usar []
 //Com um traço podemos definir um intervalo também
 
-//Note neste caso que mesmo que na frase verificada houver apenas 1 ou 2 ou 3 ele ainda retorna não, não é necessario que seja 123 consecutivo igual no regex. Isso abre muita margem pra erro, mas é apenas uma verificação simples, existem maneiras de aprimorar
+//Note neste caso que mesmo que na frase verificada houver apenas 1 ou 2 ou 3 ele ainda retorna true, não é necessario que seja 123 consecutivo igual no regex. Isso abre muita margem pra erro, mas é apenas uma verificação simples, existem maneiras de aprimorar. Um erro por exeplo é verificar o numero 35 ou 53 e ele retornar true. 5 não está no regex, mas o 3 já apareceu entao ele retorna true
 console.log('verificando conjuntos [123] ' + /[123]/.test('Existe 123 aqui?')) //fiz concatenação pra ficar mais simples de entender depois
 
 //Nesse exemplo estamos verificando a existencia de apenas um digito numero. Nesse contexto não importa se ele vem antes ou depois de letras, se é um numero grande ou apenas um digito, desde que haja um digito ele vai retornar true.
 console.log('verificando conjuntos de intervalo [0-9] ' + /[0-9]/.test('O numero 10 está presente aqui'))
 
+///// Caracteres Especiais /////
+//dica: caracteres espaciais que comecem com letram maiusculas são basicamente a negação da regra original. confira e perceba as diferenças abaixo
+
+// \. - qualquer caracter, menos nova linha
+// \d - qualquer digito de caracter (numeros)
+// \w - um caracter alfanumerico (letras e numeros)
+// \s - qualquer caracter de espaço em branco
+// \D - caracter que não são digitos
+// \W - caracter não-alfanumerico
+// \S - caracter que não seja espaço em branco
+// ^ - esse operador nega a expressão, porem apenas se a expressão estiver dentro de um conjunto. Seja um intervalo de numeros, ou um conjunto de expressões
+
+let pontoRegex = /./
+let dRegex = /\d/
+let wRegex = /\w/
+let sRegex = /\s/
+//expressões de negação
+let negaIntervalo = /[^0-9]/
+let negaConjuntosDiversos = /[^\d\s]/ //nega digitos e espaços
+let negaExpressaoAlfanumerica = /\W/
+let negaExpressaoEspaco = /\S/
+
+console.log('regex de ponto ' + pontoRegex.test('frase aleatoria')) // true
+console.log('regex de digito ' + dRegex.test('frase aleatoria')) // flase porque não tem numeros
+console.log('regex de alfanumerico ' + wRegex.test('frase aleatoria')) // true, mesmo que nao tenha numeros, tem letras e já funciona
+console.log('regex de espaço ' + sRegex.test("a e i o u")) // true porque tem espaço 
+
+console.log("========== REGEX DE NEGAÇÃO =============")
+console.log('regex de negação com intervalo ' + negaIntervalo.test("123")) // false porque tem numeros
+console.log('regex de negação com conjuntos diversos ' + negaConjuntosDiversos.test("123 ")) // false porque tem numeros e epaços. Se houvesse letras e espaços ou numeros e letras retornaria true
+console.log('regex de negação com alfanumericos ' + negaExpressaoAlfanumerica.test("olá a todos 111")) // true, apesar de conter alfanumericos, também contem espaços
+console.log('regex de negação com espaços ' + negaExpressaoEspaco.test(" ")) // false porque tem espaços. mas se adicionarmos letras, por exemplo, passa a ser true
+console.log("=============================================")
 
 
+//** verificar  */Para incluir um caracter especial (como por exemplo as aspas (), arroba@, hashtags#, etc  ) na verificação como algo que o usuario vai digitar, ou algo que precisa estar dentro da string da variavel , você precisa usar a barra invertida \ antes desse caracter. Segue o exemplo
 
-
-
+let regexComCaracterEspecial =/\@/
+let fraseComCaracterEspecial = '@pamelalima'
+console.log('frase com caracter especial ' + regexComCaracterEspecial.test(fraseComCaracterEspecial))
 
 
 
