@@ -30,14 +30,14 @@ console.log('verificando conjuntos de intervalo [0-9] ' + /[0-9]/.test('O numero
 ///// Caracteres Especiais /////
 //dica: caracteres espaciais que comecem com letram maiusculas são basicamente a negação da regra original. confira e perceba as diferenças abaixo
 
-// \. - qualquer caracter, menos nova linha
+// \. - qualquer caracter, menos quebra de linha
 // \d - qualquer digito de caracter (numeros)
 // \w - um caracter alfanumerico (letras e numeros)
 // \s - qualquer caracter de espaço em branco
 // \D - caracter que não são digitos
 // \W - caracter não-alfanumerico
 // \S - caracter que não seja espaço em branco
-// ^ - esse operador nega a expressão, porem apenas se a expressão estiver dentro de um conjunto. Seja um intervalo de numeros, ou um conjunto de expressões
+// ^ - esse operador tem mais de uma função dentro de um Expressão. Ele pode ser uma negação, porem apenas se a expressão estiver dentro de um conjunto. Seja um intervalo de numeros, ou um conjunto de expressões. Também pode ser um afirmador de limite, veja mais a frente
 
 let pontoRegex = /./
 let dRegex = /\d/
@@ -59,7 +59,32 @@ console.log('regex de negação com intervalo ' + negaIntervalo.test("123")) // 
 console.log('regex de negação com conjuntos diversos ' + negaConjuntosDiversos.test("123 ")) // false porque tem numeros e epaços. Se houvesse letras e espaços ou numeros e letras retornaria true
 console.log('regex de negação com alfanumericos ' + negaExpressaoAlfanumerica.test("olá a todos 111")) // true, apesar de conter alfanumericos, também contem espaços
 console.log('regex de negação com espaços ' + negaExpressaoEspaco.test(" ")) // false porque tem espaços. mas se adicionarmos letras, por exemplo, passa a ser true
-console.log("=============================================")
+
+///// Input boundary assertion: ^, $ /////
+//Os inputs de limite não consomem entrada, mas verifica se o valor está OBRIGATORIAMENTE no inicio ou no fim da expressão
+// ^ - determina o inicio
+// $ - determina o final
+console.log("===== Input boundary assertion =======")
+//Aqui determinamos que essa expressão precisa existir obrigatoriamente no final da string
+let validarExtensao = /\.(?:pang|jpe?g|webp|avif|gif|pdf)$/
+console.log(validarExtensao.test("doc.pdf"))
+console.log(validarExtensao.test("image.jpg"))
+console.log(validarExtensao.test("video.gif"))
+
+//Diferentemente dessa que não determina que a validação é no final da string, mesmo que a expressão acontece no iicio da string(caso 2), ainda retorna true
+let validarExtensao2 = /\.(?:pang|jpe?g|webp|avif|gif|pdf)/
+console.log(validarExtensao2.test(".pdf")) //true - porque validou no regex, mesmo sendo um valor sozinho
+console.log(validarExtensao2.test(".jpeg.image")) //true 
+console.log(validarExtensao2.test("gif")) // false, porque não tem o . antes da extensao
+
+//Aqui determinamos a expressão que deve acontecer no inicio da string, mesmo que o regex encontre no meio ou final, retornará false
+let validarFamiliar = /^(Pai|Mãe|Irmão?|Filho|Filha) de \w+/
+console.log(validarFamiliar.test("Mãe de Paulo")) //true 
+console.log(validarFamiliar.test("Irmã de Maria e Fernanda")) //true
+console.log(validarFamiliar.test("Pai")) //false
+console.log(validarFamiliar.test("Vinicius Pai de Joaquim")) //false
+console.log(validarFamiliar.test("Mateus Filho")) //false
+
 
 ///// Regex com caracteres especiais /////
 //Podemos utilizar os caracteres especiais de verias formas
@@ -77,7 +102,7 @@ console.log(palavraTresLetras.test('dia')) //true
 console.log(palavraTresLetras.test('oi')) //false
 console.log(palavraTresLetras.test('teste')) //true
 
-//Para incluir um caracter especial (como por exemplo as aspas () na verificação como algo que o usuario vai digitar, ou algo que precisa estar dentro da string da variavel , você precisa usar a barra invertida \ antes desse caracter. Segue o exemplo
+//Para incluir um caracter especial (como por exemplo as aspas (), ponto final (.) na verificação como algo que o usuario vai digitar, ou algo que precisa estar dentro da string da variavel , você precisa usar a barra invertida \ antes desse caracter. Segue o exemplo
 
 let regexComCaracterEspecial =/\(\w+\)/
 console.log('frase com caracter especial ' + regexComCaracterEspecial.test("(palavra)")) //true, porque tem incluiu o parenteses
@@ -114,7 +139,10 @@ console.log(
 )
 
 ///// Ococrrência precisa /////
-//Inserir o número de ocorrencia entre {}
+//Inserir o número de ocorrencia entre {} e determinar o intervalo usando virgula. Por exemplo: \d{1,6}. Significa que precisam ser inseridos no minimo 1 digito e no maximo 6
+
+//Para determinar intervalo a sintaxe é diferente. o intervalo se determina usando - entre os numeros. Por exemplo: \d{1-3}. Significa que o digito inserido tem que ser um valor ENTRE 1 e 3. 
+
 console.log("========= Ococrrência precisa ===========")
 
 let telefone = /\d{4,5}-\d{4}/
@@ -122,6 +150,14 @@ console.log(telefone.test('4404-5050'))//true
 console.log(telefone.test('99999-9999'))//true
 console.log(telefone.test('999-999'))//false
 console.log(telefone.test('9999-9'))//false- cumpriu a primeira expressão, mas nao cumpriu a segunda
+
+///// Lookahead e lookbehind /////
+//Vão tentar combinar a entrada subsequente (por isso lookahead, porque o codigo é lido da esquerda para a direita) com o padrão fornecido. Não consome nada da entrada
+//Sintaxe (?=pattern) ou (?!pattern)(negação)
+//Observe o exemplo
+console.log("========= Lookahead ===========")
+console.log(/^(?=.{3,16}$)([a-z0-9-_])/.test('ana22_')) //true
+
 
 ///// Metodo exec /////
 //O metodo exec nos retorna um objeto com algumas infromações sobre a regex
