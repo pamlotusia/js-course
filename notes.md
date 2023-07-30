@@ -68,3 +68,14 @@ metodos tambem vem depois de um ponto, porem metodos são acompanhados de (), po
 **JSON** não possue metodos
 
 **Expressões regulares** é uma forma de encontrar padrões em uma string. Com ela você pode fazer validações, por exemplo. Expressões regulares tambem são conhecidas como regex
+
+*box-sizing: border-box* {
+  height: 100px
+}: determina que a div vai ter apenas 100px de altura, e não 100px mais a borda. Ou seja, o tamanho total é aquele
+
+**para centralizar posições relativas, usasse margin-left e margin-right auto**
+#container{
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
