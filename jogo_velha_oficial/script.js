@@ -3,7 +3,6 @@ const currentPlayer = document.querySelector('.currentPlayer')
 let selected
 let player = 'X'
 let playerIcon = document.getElementById('icon-player')
-let nameIcon = playerIcon.alt
 
 let positions = [
   [1, 2, 3],
@@ -24,7 +23,6 @@ function init() {
   document.querySelectorAll('.board button').forEach(item => {
     item.innerHTML = ''
     item.classList.remove('winner')
-    item.classList.remove('velha')
     item.addEventListener('click', newMove)
   })
 }
@@ -44,7 +42,6 @@ function newMove(e) {
   //player = player === 'X' ? 'O' : 'X'
   if (player == 'X') {
     playerIcon.src = './images/hello-kitty-no-background.png'
-    playerIcon.alt = 'Hello Kitty'
     player = 'O'
   } else {
     playerIcon.src = './images/my-melody-no-background.png'
@@ -69,7 +66,7 @@ function check() {
       })
 
       setTimeout(() => {
-        alert('O jogador ' + nameIcon + ' ganhou!')
+        alert('O jogador ' + playerLastMove + ' ganhou!')
         init()
       }, 100)
 
