@@ -32,6 +32,15 @@ hr{
   margin-bottom: 10px;
 }
 
+.player{
+  display: flex;
+  align-items: center;
+  gap: 0 10px;
+}
+
+.player img{
+  width: 50px;
+}
 .board{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -43,5 +52,20 @@ hr{
   margin: 5px;
   cursor: pointer;
   font-size: 50px;
+
+}
+
+/*isolando o button para o winner ser mais forte*/
+button{
   background-color: white;
+}
+
+.winner{
+  background-color: #F6BBC4;
+  border-color: #F62E70;
+  color: #F62E70;
+}
+
+.velha{
+  background-color: lightgrey;
 }
