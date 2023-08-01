@@ -3,6 +3,9 @@ const currentPlayer = document.querySelector('.currentPlayer')
 let selected
 let player = 'X'
 let playerIcon = document.getElementById('icon-player')
+let messageContainer = document.querySelector('#message')
+let messageText = document.querySelector('#message p')
+let messageIcon = document.querySelector('#message-icon')
 
 let positions = [
   [1, 2, 3],
@@ -41,10 +44,10 @@ function newMove(e) {
 
   //player = player === 'X' ? 'O' : 'X'
   if (player == 'X') {
-    playerIcon.src = './images/hello-kitty-no-background.png'
+    playerIcon.src = './images/my-melody-icon.png'
     player = 'O'
   } else {
-    playerIcon.src = './images/my-melody-no-background.png'
+    playerIcon.src = './images/hello-kitty-icon.png'
     player = 'X'
   }
 
@@ -66,18 +69,43 @@ function check() {
       })
 
       setTimeout(() => {
-        alert('O jogador ' + playerLastMove + ' ganhou!')
+        declareWinner(playerLastMove)
         init()
-      }, 100)
-
+      }, 500)
       return
     }
   }
 
   if (selected.filter(item => item).length === 9) {
-    alert('Deu velha')
+    declareWinner('')
     init()
-
     return
   }
+}
+
+function declareWinner(winner) {
+  let scoreboardX = document.querySelector('#scoreboard-1')
+  let scoreboardO = document.querySelector('#scoreboard-2')
+  let msg = ''
+
+  if (winner == 'X') {
+    scoreboardX.textContent = parseInt(scoreboardX.textContent) + 1
+    msg = 'Hello Kitty venceu'
+    messageIcon.src = './images/hello-kitty-winner.png'
+  } else if (winner == 'O'){
+    scoreboardO.textContent = parseInt(scoreboardO.textContent) + 1
+    msg = 'My Melody venceu'
+    messageIcon.src = './images/my-melody-winner.png'
+  } else {
+    messageIcon.src = './images/kuromi.gif'
+    msg = 'Deu velha !'
+  }
+  //exibe mensagem
+  messageText.innerHTML = msg
+  messageContainer.classList.remove('hide')
+
+  //esconde msg
+  setTimeout(function () {
+    messageContainer.classList.add('hide')
+  }, 2000)
 }

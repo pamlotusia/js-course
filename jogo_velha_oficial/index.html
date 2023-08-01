@@ -10,10 +10,12 @@
     <main>
       <h1> 🌸 JOGO DA VELHA 🌸</h1>
       <hr>
+
       <div class="player">
         <h2 class="currentPlayer"></h2>
-        <img src="./images/my-melody-no-background.png" alt="aaaaaaaaaaaaaaaa " id="icon-player" width="70" height="50">
+        <img src=".\images\hello-kitty-icon.png" alt="" id="icon-player" width="70" height="50">
       </div>
+
       <div class="board">
         <button data-i="1"></button>
         <button data-i="2"></button>
@@ -25,7 +27,25 @@
         <button data-i="8"></button>
         <button data-i="9"></button>
       </div>
+
+      <!-- Placar -->
+      <h2>Placar</h2>
+      <div class="score-box">
+        <div class="x-section description">
+          <img src=".\images\hello-kitty-icon.png" alt="" class="score-icon">
+          <span id="x-scoreboard">Hello Kitty</span>: <span id="scoreboard-1">0</span>
+        </div>
+        <div class="o-section description">
+          <img src=".\images\my-melody-icon.png" alt="" class="score-icon">
+          <span id="o-scoreboard">My Melody</span>: <span id="scoreboard-2">0</span>   
+        </div>
+      </div>
     </main>
+
+    <div id="message" class="hide">
+      <p></p>
+      <img src="" alt="" id="message-icon">
+    </div>
 
     <script src="script.js"></script>
   </body>
